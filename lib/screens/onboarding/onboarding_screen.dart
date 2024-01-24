@@ -54,14 +54,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           Align(
                             alignment: Alignment(0, -0.25),
                             child: SizedBox(
-                              width: 470,
-                              child: Flexible(
-                                child: StrokeTextWidget(
-                                  fontSize: 20,
-                                  text:
-                                      'Immerse yourself in an exciting underwater adventure, try yourself as a marine explorer and prove your wits, resourcefulness and attention in searching for a bomb in the underwater world.',
-                                  strokeColor: AppColors.blue,
-                                ),
+                              width: 460,
+                              child: StrokeTextWidget(
+                                fontSize: 20,
+                                text:
+                                    'Immerse yourself in an exciting underwater adventure, try yourself as a marine explorer and prove your wits, resourcefulness and attention in searching for a bomb in the underwater world.',
+                                strokeColor: AppColors.blue,
                               ),
                             ),
                           ),
@@ -74,7 +72,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     child: BubbleButton(
                       text: 'Start',
                       onTap: () {
-                        context.router.push(HomeRoute());
+                        context.router.push(LevelsRoute());
                       },
                     ),
                   ),
