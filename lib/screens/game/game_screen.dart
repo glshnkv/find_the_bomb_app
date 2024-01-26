@@ -36,7 +36,6 @@ class _GameScreenState extends State<GameScreen> {
     super.initState();
     duration = const Duration();
     generateCards();
-    startGame();
   }
 
   int _health = 3;
@@ -66,18 +65,6 @@ class _GameScreenState extends State<GameScreen> {
     isGameOver = false;
   }
 
-  void startGame() {
-    for (int i = 0; i < cards.length; i++) {
-      cards[i].state = CardState.visible;
-    }
-    Future.delayed(const Duration(seconds: 2), () {
-      setState(() {
-        for (int i = 0; i < cards.length; i++) {
-          cards[i].state = CardState.hidden;
-        }
-      });
-    });
-  }
 
   void onCardPressed(int index) {
     setState(() {
@@ -86,7 +73,7 @@ class _GameScreenState extends State<GameScreen> {
     if (cards[index].image == 'assets/images/game/empty.png') {
       _decrementHealth();
       if (_health == 0) {
-        context.router.push(EndGameRoute(level: widget.level, health: _health));
+        context.router.popAndPush(EndGameRoute(level: widget.level, health: _health));
       }
     } else {
       cards[index].state = CardState.guessed;
@@ -94,7 +81,7 @@ class _GameScreenState extends State<GameScreen> {
       if (isGameOver) {
         Future.delayed(const Duration(seconds: 1), () {
           widget.level.isDone = true;
-          context.router.push(EndGameRoute(level: widget.level, health: _health));
+          context.router.popAndPush(EndGameRoute(level: widget.level, health: _health));
         });
       }
     }
@@ -191,7 +178,7 @@ class _GameScreenState extends State<GameScreen> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          context.router.push(SettingsRoute());
+                          context.router.popAndPush(SettingsRoute());
                         },
                         child: SvgPicture.asset(
                             'assets/images/elements/settings-button.svg'),
@@ -199,7 +186,7 @@ class _GameScreenState extends State<GameScreen> {
                       SizedBox(height: 15),
                       GestureDetector(
                         onTap: () {
-                          context.router.push(LevelsRoute());
+                          context.router.popAndPush(LevelsRoute());
                         },
                         child: SvgPicture.asset(
                             'assets/images/elements/home-button.svg'),

@@ -147,14 +147,14 @@ class _EndGameScreenState extends State<EndGameScreen> {
                                   ? BubbleButton(
                                   text: 'Next',
                                   onTap: () {
-                                    context.router.push(LevelsRoute());
+                                    context.router.popAndPush(LevelsRoute());
                                   })
                                   : BubbleButton(
                                   text: 'Retry',
                                   onTap: () {
                                     if (state.health != 0) {
                                       context.read<HealthBloc>().add(DecrementHealthEvent());
-                                      context.router.push(GameRoute(level: widget.level));
+                                      context.router.popAndPush(GameRoute(level: widget.level));
                                     } else {
                                       ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(

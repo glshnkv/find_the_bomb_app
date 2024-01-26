@@ -72,7 +72,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     child: BubbleButton(
                       text: 'Start',
                       onTap: () {
-                        context.router.push(LevelsRoute());
+                        context.router.popAndPush(LevelsRoute());
                       },
                     ),
                   ),

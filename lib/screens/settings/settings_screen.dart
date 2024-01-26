@@ -79,7 +79,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          context.router.push(LevelsRoute());
+                          context.router.popAndPush(LevelsRoute());
                         },
                         child: SvgPicture.asset(
                             'assets/images/elements/home-button.svg'),

@@ -67,7 +67,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                       BubbleButton(
                         text: 'Next',
                         onTap: () {
-                          context.router.push(OnboardingRoute());
+                          context.router.popAndPush(OnboardingRoute());
                         },
                       ),
                     ],

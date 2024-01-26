@@ -44,7 +44,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                     SizedBox(width: 35),
                     GestureDetector(
                       onTap: () {
-                        context.router.push(SettingsRoute());
+                        context.router.popAndPush(SettingsRoute());
                       },
                       child: SvgPicture.asset(
                           'assets/images/elements/settings-button.svg'),
@@ -76,7 +76,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
                                 await SharedPreferencesService.getInstance();
                                 if (storage.health > 0) {
                                   context.read<HealthBloc>().add(DecrementHealthEvent());
-                                  context.router.push(GameRoute(level: state.levels[index]));
+                                  context.router.popAndPush(GameRoute(level: state.levels[index]));
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
